@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %}
+	Statement
+{% endblock %}
+{% block main %}
+
+	<div  id="statement">
+	<font style ="color:white" > 
+		<table class="table table-stripped">
+			<thead>
+				<th scope='col'> Reason </th>
+				<th scope="col"> Type </th>
+				<th scope="col"> Amount </th>
+				<th scope="col"> Date </th>
+			</thead>
+			<tbody>
+				{% for record in records %}
+					<tr>
+						<td>
+							{{record[1]}}
+						</td>
+						<td>
+							{% if record[2]== 'D' %}
+								{{"Debit"}}
+							{% else %}
+ 								{{"Credit"}}
+							{% endif %}
+						</td>
+						<td>
+							{{record[3]}}
+						</td>
+						<td>  
+							{{record[4]}}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+			
+			<tfoot>
+				<th scope="col"> <font color="cyan" face="Comic sans MS" >Current Balance</font></th>
+				<th scope="col"></th>
+				<th style="color:cyan" scope="col">{{balance}}</th>
+				<th scope="col"></th>
+				
+			</tfoot>
+		</table>
+		</font>
+	</div>
+{% endblock %}
